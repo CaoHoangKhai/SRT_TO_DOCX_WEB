@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 from docx import Document
 import io
+import os
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ def srt_to_docx_bytes(srt_text):
         line = line.strip()
         if line.isdigit():  # bỏ số thứ tự
             continue
-        if "-->" in line:  # bỏ dòng thời gian
+        if "-->" in line:  # bỏ thời gian
             continue
         if line == "":
             continue
@@ -50,5 +51,9 @@ def index():
 
     return render_template("index.html")
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Render.com cung cấp PORT qua biến môi trường
+    port = int(os.environ.get("PORT", 5000))
+    # Listen tất cả host, không bật debug
+    app.run(host="0.0.0.0", port=port)
