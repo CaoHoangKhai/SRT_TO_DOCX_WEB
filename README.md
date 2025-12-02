@@ -54,7 +54,7 @@ python app.py
 http://127.0.0.1:5000
 ```
 
-5. Upload file .srt → download .docx
+5. Upload file `.srt` → download `.docx`
 
 ##  🚀 Deploy trên Render
 
